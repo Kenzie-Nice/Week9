@@ -1,31 +1,22 @@
 $(document).ready(function () {
-    // Call the Steam API using jQuery AJAX
-    $.getJSON("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v0001/?format=json&appid=0", function (data) {
-        // Log the data to check its structure
-        console.log(data);
+    // Fetch the local data.json file using jQuery AJAX
+    $.getJSON("data.json", function (data) {
+        // Extract the player count from the response
+        let playerCount = data.response.player_count;
         
-        // Assuming the API returns the data in a specific format
-        // You can now display the data on your page
-        let output = `<div class="steam-data">
-                        <h3>Current Players: ${data.response.player_count}</h3>
-                        <p>App ID: ${data.response.appid}</p>
-                      </div>`;
+        // Display the player count on the page
+        let output = `<div class="item"><h3>Current Player Count: ${playerCount}</h3></div>`;
         
-        // Append data to the container
+        // Append the output to the container
         $("#data-container").html(output);
-
-        // Apply a custom jQuery plugin if needed
-        $(".steam-data").highlightEffect();
+        
+        // Apply custom jQuery plugin (e.g., highlight effect)
+        $(".item").highlightEffect();
     });
 
-    // Custom jQuery plugin to highlight the data
+    // Custom jQuery plugin to add a highlight effect
     $.fn.highlightEffect = function () {
-        this.css({
-            "background-color": "#f0f8ff",
-            "border": "2px solid #007bff",
-            "padding": "10px",
-            "border-radius": "5px"
-        });
+        this.css({ "background-color": "#f0f8ff", "border": "2px solid #007bff", "padding": "10px", "border-radius": "5px" });
         return this;
     };
 });
