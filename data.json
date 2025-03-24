@@ -1,14 +1,6 @@
-[
-    {
-        "name": "Example Item 1",
-        "description": "This is the first example item, providing details about the item."
-    },
-    {
-        "name": "Example Item 2",
-        "description": "This is the second example item, providing details about another item."
-    },
-    {
-        "name": "Example Item 3",
-        "description": "Details about the third example item, continuing the pattern."
+{
+    "response": {
+        "player_count": 123456,
+        "appid": 0
     }
-]
+}
